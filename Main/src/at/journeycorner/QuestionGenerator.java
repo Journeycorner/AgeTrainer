@@ -1,3 +1,5 @@
+package at.journeycorner;
+
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,12 +38,15 @@ public class QuestionGenerator {
     }
 
     public static QuestionGenerator getInstance() {
-        return instance == null ? new QuestionGenerator() : instance;
+        if (instance == null) {
+            instance = new QuestionGenerator();
+        }
+        return instance;
     }
 
     public class Question {
-        private String formattedDate;
-        private int correctAnswer;
+        private final String formattedDate;
+        private final int correctAnswer;
 
         public Question(String formattedDate, int correctAnswer) {
             this.formattedDate = formattedDate;
